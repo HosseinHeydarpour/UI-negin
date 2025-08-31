@@ -1,11 +1,15 @@
 <section class="product__page">
-  <div class="container mx-auto mt-12 px-48">
-    <div class="grid grid-cols-2 gap-x-8 hero">
-      <div class="product__img overflow-hidden rounded-2xl">
+  <div class="container mx-auto px-6 mt-6 lg:mt-12 lg:px-48">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 hero">
+      <div class="product__img overflow-hidden rounded-2xl mb-6 lg:mb-0">
         <img src="hero.png" alt="" class="w-full object-cover" />
       </div>
-      <div class="product__details flex flex-col">
-        <h2 class="text-xl font-semibold mb-2 text-gray-900">
+      <div
+        class="product__details flex flex-col border border-gray-200 border-solid rounded-xl lg:border-0"
+      >
+        <h2
+          class="text-md lg:text-xl font-semibold mb-2 text-gray-900 pr-4 mt-4 lg:mt-0 lg:pr-0"
+        >
           پکیج ۵ عددی روتین پوست چرب و مختلط
         </h2>
         <hr />
@@ -37,7 +41,9 @@
           </ul>
         </div>
 
-        <div class="actions flex items-center justify-between mt-auto">
+        <div
+          class="actions hidden items-center justify-between mt-auto lg:flex"
+        >
           @if(!notInCart()){
           <button appButton (click)="onAddProductToCart()">
             افزودن به سبد خرید
@@ -94,7 +100,7 @@
     </div>
 
     <!-- Product cards -->
-    <div class="grid grid-cols-4 gap-4 my-16">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 my-16">
       <app-product-card [productInfo]="product"></app-product-card>
       <app-product-card [productInfo]="product"></app-product-card>
       <app-product-card [productInfo]="product"></app-product-card>
