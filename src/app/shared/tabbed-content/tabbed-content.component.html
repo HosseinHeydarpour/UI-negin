@@ -1,0 +1,23 @@
+<div
+  class="tabbed-content bg-white border border-solid border-gray-200 rounded-xl shadow-sm p-4 px-6"
+>
+  <div
+    class="tabs border-b border-solid border-gray-100 flex items-center gap-16"
+  >
+    @for (tab of tabs(); track $index) {
+    <div
+      class="tab flex items-center gap-2 hover:text-gray-900 hover:font-bold hover:cursor-pointer relative after:absolute after:bottom-0 after:content-[''] after:block after:w-full after:h-[2px] after:bg-accent after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 py-4"
+      (click)="activeTab = $index"
+      [class.text-gray-900]="activeTab === $index"
+      [class.font-bold]="activeTab === $index"
+      [class.after:scale-x-100]="activeTab === $index"
+    >
+      <i class="{{ tab.icon }}"></i>
+      {{ tab.title }}
+    </div>
+    }
+  </div>
+  <div class="content mt-4 text-gray-500 px-7 text-sm">
+    {{ tabs()[activeTab].content }}
+  </div>
+</div>
