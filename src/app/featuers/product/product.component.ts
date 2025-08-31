@@ -14,6 +14,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { sign } from 'crypto';
 
 @Component({
   selector: 'app-product',
@@ -38,6 +39,7 @@ export class ProductComponent {
   form: FormGroup;
 
   productQuantity: number = 10;
+  remainingStock = signal<number>(this.productQuantity);
 
   constructor() {
     this.form = new FormGroup({
@@ -70,6 +72,8 @@ export class ProductComponent {
       const currentValue = control.value ?? 0; // default to 0 if null
       if (currentValue > 0) {
         control.setValue(currentValue - 1);
+        this.productQuantity = this.productQuantity + 1;
+        this.remainingStock.update((stock) => stock + 1);
       }
     }
   }
@@ -80,6 +84,8 @@ export class ProductComponent {
       const currentValue = control.value ?? 0;
       if (currentValue < this.productQuantity) {
         control.setValue(currentValue + 1);
+
+        this.remainingStock.update((stock) => stock - 1);
       }
     }
   }
