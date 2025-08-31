@@ -48,16 +48,23 @@
           >
             <i
               class="icon-minus absolute cursor-pointer left-2 top-1/2 text-gray-500 -translate-y-1/2"
+              (click)="onMinusBtnClicked()"
             ></i>
             <form [formGroup]="form">
               <input
-                type="text"
                 class="text-center border-none outline-none"
                 formControlName="shoppingCardInput"
+                type="number"
               />
+              @if(form.get('shoppingCardInput')?.errors?.['max'] &&
+              (form.get('shoppingCardInput')?.dirty ||
+              form.get('shoppingCardInput')?.touched)){
+              <span>تعداد انتخابی نمی تواند بیش از موجودی باشد</span>
+              }
             </form>
             <i
               class="icon-plus absolute cursor-pointer right-2 top-1/2 text-gray-500 -translate-y-1/2"
+              (click)="onPlusBtnClicked()"
             ></i>
           </div>
 
@@ -78,7 +85,7 @@
               <i class="icon-warehouse text-green-500 text-md"></i>
               <span class="text-sm text-gray-500"> باقی مانده: </span>
             </div>
-            <span>۱۰ عدد</span>
+            <span>{{ productQuantity }} عدد</span>
           </div>
         </div>
       </div>

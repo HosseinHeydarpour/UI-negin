@@ -7,7 +7,13 @@ import {
   TabbedContentComponent,
 } from '../../shared/tabbed-content/tabbed-content.component';
 
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  MaxValidator,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-product',
@@ -29,9 +35,18 @@ export class ProductComponent {
     imageUrl: 'p.png',
   };
 
-  form = new FormGroup({
-    shoppingCardInput: new FormControl<number>(0, { nonNullable: true }),
-  });
+  form: FormGroup;
+
+  productQuantity: number = 10;
+
+  constructor() {
+    this.form = new FormGroup({
+      shoppingCardInput: new FormControl<number>(0, {
+        nonNullable: true,
+        validators: [Validators.min(0), Validators.max(this.productQuantity)],
+      }),
+    });
+  }
 
   notInCart = signal<boolean>(false);
 
@@ -48,6 +63,26 @@ export class ProductComponent {
       icon: 'icon-comment',
     },
   ];
+
+  onMinusBtnClicked() {
+    const control = this.form.get('shoppingCardInput');
+    if (control) {
+      const currentValue = control.value ?? 0; // default to 0 if null
+      if (currentValue > 0) {
+        control.setValue(currentValue - 1);
+      }
+    }
+  }
+
+  onPlusBtnClicked() {
+    const control = this.form.get('shoppingCardInput');
+    if (control) {
+      const currentValue = control.value ?? 0;
+      if (currentValue < this.productQuantity) {
+        control.setValue(currentValue + 1);
+      }
+    }
+  }
 
   onAddProductToCart() {
     this.notInCart.set(!this.notInCart());
