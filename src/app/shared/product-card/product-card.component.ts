@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
   imports: [],
   templateUrl: './product-card.component.html',
-  styleUrl: './product-card.component.scss'
+  styleUrl: './product-card.component.scss',
 })
 export class ProductCardComponent {
-
+  productInfo = input.required<Product>();
 }

@@ -1,5 +1,5 @@
 <div
-  class="bg-white border border-solid border-gray-200 rounded-xl shadow-sm p-4 px-6"
+  class="bg-white border border-solid border-gray-200 rounded-xl shadow-sm p-4 px-6 hover:-translate-y-2 transition-all duration-300 cursor-pointer hover:shadow-lg"
 >
   <img
     src="p.png"
@@ -7,10 +7,10 @@
     class="w-full h-auto object-cover rounded-md mb-4"
   />
   <div>
-    <span class="text-gray-400 mb-3 text-sm">Lidoma</span>
+    <span class="text-gray-400 mb-3 text-sm">{{ productInfo().brand }}</span>
     <h3 class="text-md font-semibold mb-2 text-gray-600">
-      محلول پاک کننده اوی هیدرا
+      {{ productInfo().name }}
     </h3>
-    <span class="price text-red-500 font-bold">۳۰۰,۰۰۰ تومان</span>
+    <span class="price text-red-500 font-bold">{{ productInfo().price }}</span>
   </div>
 </div>
