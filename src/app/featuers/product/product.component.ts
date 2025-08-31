@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { ProductCardComponent } from '../../shared/product-card/product-card.component';
 import { Product } from '../../shared/models/product.model';
@@ -6,12 +6,18 @@ import {
   Tab,
   TabbedContentComponent,
 } from '../../shared/tabbed-content/tabbed-content.component';
-import { title } from 'process';
+
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [ButtonComponent, ProductCardComponent, TabbedContentComponent],
+  imports: [
+    ButtonComponent,
+    ProductCardComponent,
+    TabbedContentComponent,
+    ReactiveFormsModule,
+  ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
 })
@@ -22,6 +28,12 @@ export class ProductComponent {
     price: '۳۰۰,۰۰۰ تومان',
     imageUrl: 'p.png',
   };
+
+  form = new FormGroup({
+    shoppingCardInput: new FormControl<number>(0, { nonNullable: true }),
+  });
+
+  notInCart = signal<boolean>(false);
 
   tabs: Tab[] = [
     {
@@ -36,4 +48,8 @@ export class ProductComponent {
       icon: 'icon-comment',
     },
   ];
+
+  onAddProductToCart() {
+    this.notInCart.set(!this.notInCart());
+  }
 }

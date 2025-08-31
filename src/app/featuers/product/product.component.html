@@ -38,7 +38,30 @@
         </div>
 
         <div class="actions flex items-center justify-between mt-auto">
-          <button appButton>افزودن به سبد خرید</button>
+          @if(!notInCart()){
+          <button appButton (click)="onAddProductToCart()">
+            افزودن به سبد خرید
+          </button>
+          } @else {
+          <div
+            class="form-group relative py-4 px-2 rounded-xl bg-white border border-solid border-gray-200"
+          >
+            <i
+              class="icon-minus absolute cursor-pointer left-2 top-1/2 text-gray-500 -translate-y-1/2"
+            ></i>
+            <form [formGroup]="form">
+              <input
+                type="text"
+                class="text-center border-none outline-none"
+                formControlName="shoppingCardInput"
+              />
+            </form>
+            <i
+              class="icon-plus absolute cursor-pointer right-2 top-1/2 text-gray-500 -translate-y-1/2"
+            ></i>
+          </div>
+
+          }
 
           <div class="price flex flex-col">
             <div class="flex items-center gap-2 mb-3">
