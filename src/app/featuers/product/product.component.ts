@@ -40,6 +40,7 @@ export class ProductComponent {
 
   productQuantity: number = 10;
   remainingStock = signal<number>(this.productQuantity);
+  maxStockReached = signal<boolean>(false);
 
   constructor() {
     this.form = new FormGroup({
@@ -72,8 +73,8 @@ export class ProductComponent {
       const currentValue = control.value ?? 0; // default to 0 if null
       if (currentValue > 0) {
         control.setValue(currentValue - 1);
-        this.productQuantity = this.productQuantity + 1;
         this.remainingStock.update((stock) => stock + 1);
+        this.maxStockReached.set(false);
       }
     }
   }
@@ -84,8 +85,10 @@ export class ProductComponent {
       const currentValue = control.value ?? 0;
       if (currentValue < this.productQuantity) {
         control.setValue(currentValue + 1);
-
         this.remainingStock.update((stock) => stock - 1);
+        if (currentValue + 1 === this.productQuantity) {
+          this.maxStockReached.set(true);
+        }
       }
     }
   }
