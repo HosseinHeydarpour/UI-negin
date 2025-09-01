@@ -16,7 +16,7 @@
         <h2 class="text-gray-900 font-bold text-md mt-3 mb-3">
           ویژگی های محصول:
         </h2>
-        <ul class="list-disc pr-4 flex flex-col gap-2">
+        <ul class="lg:list-disc pr-4 flex flex-col gap-2">
           <li class="text-gray-500">
             ترکیبی هدفمند از کرم نرم کننده و آبرسان 10% اوره اورلین و کرم دست و
             پا جی
@@ -107,8 +107,13 @@
       <app-product-card [productInfo]="product"></app-product-card>
     </div>
 
-    <!-- Tabbed content -->
-    <div class="my-16">
+    <!-- Tabbed content (Desktop)-->
+    <div class="my-16 hidden lg:block">
+      <app-tabbed-content [tabs]="tabs"></app-tabbed-content>
+    </div>
+
+    <!-- Accrodion (Mobile)-->
+    <div class="my-16 lg:hidden">
       <app-tabbed-content [tabs]="tabs"></app-tabbed-content>
     </div>
   </div>

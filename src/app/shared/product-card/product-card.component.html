@@ -1,14 +1,18 @@
 <div
-  class="bg-white border border-solid border-gray-200 rounded-xl shadow-sm p-4 px-6 hover:-translate-y-2 transition-all duration-300 cursor-pointer hover:shadow-lg"
+  class="lg:bg-white lg:border lg:border-solid lg:border-gray-200 lg:rounded-xl lg:shadow-sm lg:p-4 lg:px-6 hover:-translate-y-2 transition-all duration-300 cursor-pointer hover:shadow-lg flex items-center gap-4 lg:block"
 >
-  <img
-    src="p.png"
-    alt="Product Image"
-    class="w-full h-auto object-cover rounded-md mb-4"
-  />
+  <div
+    class="border border-solid border-gray-300 rounded-xl lg:border-none w-1/2 lg:w-full overflow-hidden"
+  >
+    <img
+      src="p.png"
+      alt="Product Image"
+      class="w-full h-auto object-cover rounded-md mb-4"
+    />
+  </div>
   <div>
     <span class="text-gray-400 mb-3 text-sm">{{ productInfo().brand }}</span>
-    <h3 class="text-md font-semibold mb-2 text-gray-600">
+    <h3 class="lg:text-md font-semibold mb-2 text-gray-600 text-sm">
       {{ productInfo().name }}
     </h3>
     <span class="price text-red-500 font-bold">{{ productInfo().price }}</span>
