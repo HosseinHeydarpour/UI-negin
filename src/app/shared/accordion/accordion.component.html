@@ -1,17 +1,19 @@
 <div class="accordion border border-solid border-gray-300 rounded-2xl">
   <div class="accordion__item border-b border-solid border-gray-300">
-    <div class="accordion__header flex justify-between items-center p-4">
+    <div
+      class="accordion__header flex justify-between items-center p-4"
+      (click)="toggleAccordion(1)"
+    >
       <h3
         class="accordion__title transition duration-100 flex items-center gap-2"
-        [ngClass]="{ 'text-darkAccent': isOpen() === 1 }"
+        [ngClass]="{ 'text-customGreen': isOpen() === 1 }"
       >
         <i class="icon-description"></i>
         توضیحات تکمیلی محصول
       </h3>
       <button
-        class="accordion__toggle lh-0 duration-300 transition-all"
+        class="accordion__toggle lh-0 duration-300 transition-all outline-none border-none"
         aria-expanded="false"
-        (click)="toggleAccordion(1)"
         [ngClass]="{ 'rotate-180': isOpen() === 1 }"
       >
         <i class="icon-chevron-down"></i>
@@ -34,22 +36,27 @@
   </div>
 
   <div class="accordion__item">
-    <div class="accordion__header flex justify-between items-center p-4">
-      <h3 class="accordion__title flex items-center gap-2">
+    <div
+      class="accordion__header flex justify-between items-center p-4"
+      (click)="toggleAccordion(2)"
+    >
+      <h3
+        class="accordion__title flex items-center gap-2"
+        [ngClass]="{ 'text-customGreen': isOpen() === 2 }"
+      >
         <i class="icon-comment"></i>
         نظرات
       </h3>
       <button
         class="accordion__toggle lh-0 duration-300 transition-all"
         aria-expanded="false"
-        (click)="toggleAccordion(2)"
         [ngClass]="{ 'rotate-180 ': isOpen() === 2 }"
       >
         <i class="icon-chevron-down"></i>
       </button>
     </div>
     <div class="accordion__content p-4" [hidden]="isOpen() !== 2">
-      <p>هنوز نظری ثبت شده است</p>
+      <p class="text-sm text-gray-500">هنوز نظری ثبت شده است</p>
     </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         accent: "#c4c6b6",
         darkAccent: "#566357",
+        customGreen: "#4caf50",
       },
     },
   },
