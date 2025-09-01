@@ -2,7 +2,7 @@
   @for (item of items(); track $index) {
   <div
     class="accordion__item"
-    ngClass="{ 'border-b border-solid border-gray-300': !$last }"
+    [ngClass]="{ 'border-b border-solid border-gray-300': !$last }"
   >
     <div
       class="accordion__header flex justify-between items-center p-4"
@@ -18,12 +18,12 @@
       <button
         class="accordion__toggle lh-0 duration-300 transition-all outline-none border-none"
         aria-expanded="false"
-        [ngClass]="{ 'rotate-180': isOpen() === 1 }"
+        [ngClass]="{ 'rotate-180': isOpen() === $index }"
       >
         <i class="icon-chevron-down"></i>
       </button>
     </div>
-    <div class="accordion__content p-4" [hidden]="isOpen() !== 1">
+    <div class="accordion__content p-4" [hidden]="isOpen() !== $index">
       <p class="text-sm text-gray-500">
         {{ item.content }}
       </p>
