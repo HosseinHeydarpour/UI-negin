@@ -53,7 +53,7 @@
           } @else {
           <div class="flex flex-col relative">
             <div
-              class="form-group relative py-4 px-2 rounded-xl bg-white border border-solid border-gray-100 shadow-md"
+              class="form-group relative py-4 px-2 rounded-xl bg-white border border-solid border-gray-100 shadow-md w-36"
             >
               <i
                 class="icon-minus absolute cursor-pointer left-2 top-1/2 text-gray-500 -translate-y-1/2"
@@ -61,7 +61,7 @@
               ></i>
               <form [formGroup]="form">
                 <input
-                  class="text-center border-none outline-none"
+                  class="text-center border-none outline-none w-full"
                   formControlName="shoppingCardInput"
                 />
               </form>
@@ -72,7 +72,7 @@
             </div>
 
             @if(maxStockReached()){
-            <span class="text-red-500 text-xs absolute -bottom-5 w-full"
+            <span class="text-red-500 text-xs absolute -bottom-8 w-max"
               >تعداد بیش از حد مجاز امکان پذیر نیست</span
             >
 
