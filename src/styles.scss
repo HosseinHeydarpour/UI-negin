@@ -3,6 +3,62 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/IRANYekanRegular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/IRANYekan-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/IRANYekan-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/IRANYekan-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/IRANYekan-ExtraBlack.woff") format("woff");
+  font-weight: 950;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/IRANYekan-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/IRANYekan-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/IRANYekan-Thin.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
 *,
 *::after,
 *::before {
@@ -15,6 +71,7 @@ body {
   min-height: 100dvh;
   direction: rtl;
   background-color: #fcfcfc;
+  font-family: "IRANYekan";
 }
 
 // Icons
