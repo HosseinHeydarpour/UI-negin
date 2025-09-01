@@ -15,6 +15,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { sign } from 'crypto';
+import { AccordionComponent } from '../../shared/accordion/accordion.component';
 
 @Component({
   selector: 'app-product',
@@ -24,6 +25,7 @@ import { sign } from 'crypto';
     ProductCardComponent,
     TabbedContentComponent,
     ReactiveFormsModule,
+    AccordionComponent,
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
