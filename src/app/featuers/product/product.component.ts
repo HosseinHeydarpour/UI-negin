@@ -15,6 +15,7 @@ import {
 } from '@angular/forms';
 import { AccordionComponent } from '../../shared/accordion/accordion.component';
 import { Accordion } from '../../shared/models/accordion.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product',
@@ -25,6 +26,7 @@ import { Accordion } from '../../shared/models/accordion.model';
     TabbedContentComponent,
     ReactiveFormsModule,
     AccordionComponent,
+    CommonModule,
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
@@ -111,9 +113,9 @@ export class ProductComponent {
 
   constructor() {
     this.form = new FormGroup({
-      shoppingCardInput: new FormControl<number>(0, {
+      shoppingCardInput: new FormControl<number>(1, {
         nonNullable: true,
-        validators: [Validators.min(0), Validators.max(this.productQuantity)],
+        validators: [Validators.min(1), Validators.max(this.productQuantity)],
       }),
     });
   }
@@ -130,10 +132,12 @@ export class ProductComponent {
     const control = this.form.get('shoppingCardInput');
     if (control) {
       const currentValue = control.value ?? 0;
-      if (currentValue > 0) {
+      if (currentValue > 1) {
         control.setValue(currentValue - 1);
         this.remainingStock.update((stock) => stock + 1);
         this.maxStockReached.set(false);
+      } else if (currentValue === 1) {
+        this.notInCart.set(!this.notInCart());
       }
     }
   }
