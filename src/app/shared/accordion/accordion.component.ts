@@ -1,5 +1,6 @@
 import { NgClass } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
+import { Accordion } from '../models/accordion.model';
 
 @Component({
   selector: 'app-accordion',
@@ -9,6 +10,8 @@ import { Component, signal } from '@angular/core';
   styleUrl: './accordion.component.scss',
 })
 export class AccordionComponent {
+  items = input.required<Accordion[]>();
+
   isOpen = signal<number>(0);
 
   toggleAccordion(index: number) {
